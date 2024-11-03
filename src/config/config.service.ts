@@ -9,7 +9,7 @@ config({ path: envFilePath });
 export class ConfigService {
   constructor(private env: { [k: string]: string | undefined }) {}
 
-  private getValue(key: string, throwOnMissing = true): string {
+  public getValue(key: string, throwOnMissing = true): string {
     const value = this.env[key];
     if (!value && throwOnMissing) {
       throw new Error(`config error - missing env.${key}`);
@@ -46,7 +46,7 @@ export class ConfigService {
       ],
       autoloadEntities: true,
       migrationsTableName: 'migration',
-      migrations: ['dist/src/migrations/*.ts'],
+      migrations: ['dist/src/migrations/*.ts', 'dist/src/migrations/*.js'],
     };
   }
 
