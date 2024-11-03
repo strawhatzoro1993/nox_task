@@ -41,15 +41,11 @@ export class ConfigService {
       password: this.getValue('DB_PASSWORD'),
       database: this.getValue('DB_NAME'),
 
-      entities: ['src/modules/**/models/*.entity.ts'],
+      entities: ['dist/src/modules/**/models/*.entity{.ts,js}'],
 
       migrationsTableName: 'migration',
 
-      migrations: ['src/migrations/*.ts'],
-      cli: {
-        migrationsDir: 'src/migrations',
-      },
-      ssl: this.isProduction(),
+      migrations: ['dist/src/migrations/*.ts'],
     };
   }
 
