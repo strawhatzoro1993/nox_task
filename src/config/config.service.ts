@@ -40,11 +40,12 @@ export class ConfigService {
       username: this.getValue('DB_USER'),
       password: this.getValue('DB_PASSWORD'),
       database: this.getValue('DB_NAME'),
-
-      entities: ['dist/src/modules/**/models/*.entity{.ts,js}'],
-
+      entities: [
+        'dist/src/modules/**/models/*.entity.js',
+        'dist/src/modules/**/models/*.entity.d.ts',
+      ],
+      autoloadEntities: true,
       migrationsTableName: 'migration',
-
       migrations: ['dist/src/migrations/*.ts'],
     };
   }
