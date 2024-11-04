@@ -9,6 +9,7 @@ import { configService } from '../../config/config.service';
 import { PassportModule } from '@nestjs/passport';
 import { AuthGuard } from './guards/auth.guard';
 import { UsersService } from './services/users.service';
+import { RolesGuard } from './guards/roles.guard';
 @Module({
   imports: [
     TypeOrmModule.forFeature([User]),
@@ -17,8 +18,8 @@ import { UsersService } from './services/users.service';
       signOptions: { expiresIn: '1h' },
     }),
   ],
-  providers: [AuthService, AuthGuard, UsersService, JwtStrategy],
+  providers: [AuthService, AuthGuard, RolesGuard, UsersService, JwtStrategy],
   controllers: [AuthController],
-  exports: [AuthService, AuthGuard, UsersService, JwtModule],
+  exports: [AuthService, AuthGuard, RolesGuard, UsersService, JwtModule],
 })
 export class AuthModule {}

@@ -28,13 +28,13 @@ export class AuthGuard implements CanActivate {
 
     try {
       const decoded = this.jwtService.verify(token);
-      const hasAdminRole = this.authService.validateUser(
+      const validUser = this.authService.validateUser(
         decoded.username,
         decoded.role,
       );
 
-      if (!hasAdminRole) {
-        throw new UnauthorizedException('Access denied: Admins only');
+      if (!validUser) {
+        throw new UnauthorizedException('Access denied');
       }
 
       request.user = decoded;

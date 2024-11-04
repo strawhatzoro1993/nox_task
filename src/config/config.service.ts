@@ -6,6 +6,8 @@ config();
 const NODE_ENV = process.env.NODE_ENV;
 const envFilePath = path.resolve(process.cwd(), `src/env/${NODE_ENV}.env`);
 config({ path: envFilePath });
+
+//TODO make config module and service injectable
 export class ConfigService {
   constructor(private env: { [k: string]: string | undefined }) {}
 
@@ -45,6 +47,7 @@ export class ConfigService {
         'dist/src/modules/**/models/*.entity.d.ts',
       ],
       autoloadEntities: true,
+      synchronize: true,
       migrationsTableName: 'migration',
       migrations: ['dist/src/migrations/*.ts', 'dist/src/migrations/*.js'],
     };
