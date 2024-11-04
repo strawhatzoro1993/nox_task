@@ -1,11 +1,11 @@
 import { Controller, Post, Body, UseGuards, Param } from '@nestjs/common';
-import { CreateRestaurantDto } from './dto/create-restaurant.dto';
-import { RestaurantService } from './services/restaurant.service';
-import { Restaurant } from './models/restaurant.entity';
-import { AuthGuard } from '../auth/guards/auth.guard';
-import { RolesGuard } from '../auth/guards/roles.guard';
-import { CreateReservationDto } from './dto/create-reservation.dto';
-import { IsAdultGuard } from './guards/is-adult.guard';
+import { CreateRestaurantDto } from '../dto/create-restaurant.dto';
+import { RestaurantService } from '../services/restaurant.service';
+import { Restaurant } from '../models/restaurant.entity';
+import { AuthGuard } from '../../auth/guards/auth.guard';
+import { RolesGuard } from '../../auth/guards/roles.guard';
+import { CreateReservationDto } from '../dto/create-reservation.dto';
+import { IsAdultGuard } from '../guards/is-adult.guard';
 
 @Controller('restaurants')
 export class RestaurantController {

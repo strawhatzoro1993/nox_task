@@ -1,6 +1,13 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Client } from './client.entity'; // Asegúrate de importar la entidad correcta
-import { Restaurant } from './restaurant.entity'; // Asegúrate de importar la entidad correcta
+import { Restaurant } from './restaurant.entity';
+import { Order } from './order.entity'; // Asegúrate de importar la entidad correcta
 
 @Entity()
 export class Reservation {
@@ -15,4 +22,7 @@ export class Reservation {
 
   @Column()
   date: Date;
+
+  @OneToMany(() => Order, (order) => order.reservation)
+  orders: Order[];
 }
