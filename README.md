@@ -28,6 +28,19 @@
 
 ## Project setup
 
+Crear un fichero .env con la variable NODE_ENV=development
+dentro de /src/env crear un fichero development.env con la siguientes variables
+DB_HOST=localhost  
+DB_PORT=5432  
+DB_USER=nox  
+DB_PASSWORD=nox  
+DB_NAME=nox-task  
+JWT_SECRET=myjwtsecret  
+ADMIN_PASSWORD=admin  
+ADULT_AGE=18  
+
+
+
 ```bash
 $ npm install
 ```
