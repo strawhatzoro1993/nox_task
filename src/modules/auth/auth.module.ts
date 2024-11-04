@@ -6,7 +6,6 @@ import { JwtModule, JwtService } from '@nestjs/jwt';
 import { JwtStrategy } from './jwt.strategy';
 import { User } from './models/user.entity';
 import { configService } from '../../config/config.service';
-import { PassportModule } from '@nestjs/passport';
 import { AuthGuard } from './guards/auth.guard';
 import { UsersService } from './services/users.service';
 import { RolesGuard } from './guards/roles.guard';
@@ -14,7 +13,7 @@ import { RolesGuard } from './guards/roles.guard';
   imports: [
     TypeOrmModule.forFeature([User]),
     JwtModule.register({
-      secret: 'yourSecretKey', // Cambia esto por una clave secreta segura
+      secret: configService.getValue('JWT_SECRET'), // Cambia esto por una clave secreta segura
       signOptions: { expiresIn: '1h' },
     }),
   ],
