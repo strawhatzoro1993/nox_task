@@ -1,4 +1,4 @@
-FROM docker.prod.uci.cu/docker-all/node
+FROM node
 
 WORKDIR /app
 
