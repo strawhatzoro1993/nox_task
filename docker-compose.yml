@@ -12,6 +12,21 @@ services:
       - '5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
+  nest_app:
+    build:
+      context: .
+    container_name: nest_app
+    restart: always
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
 
 volumes:
   postgres_data:
